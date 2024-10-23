@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Grid Layout with Zoom Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr); /* 12 列布局 */
+            grid-template-rows: repeat(10, 1fr); /* 10 行布局 */
+            gap: 10px;
+            width: 100%;
+            height: 98vh; /* 調整到 98vh */
+            padding: 10px;
+        }
+        .item {
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.5s ease;
+        }
+        /* 沒有動畫的 Box 更換圖片並設置透明度 */
+        .item-static {
+            background-image: url('https://plus.unsplash.com/premium_photo-1675784150228-62f0a08e8b67?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            opacity: 0.5;
+        }
+        /* 動畫 Box 使用原來的圖片 */
+        .item-animated {
+            background-image: url('https://images.unsplash.com/photo-1525013066836-c6090f0ad9d8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        }
+        
+        /* 隨機大小和位置的格子 */
+        .item1 { grid-column: span 2; grid-row: span 2; }
+        .item2 { grid-column: span 3; grid-row: span 1; }
+        .item3 { grid-column: span 4; grid-row: span 2; }
+        .item4 { grid-column: span 2; grid-row: span 3; }
+        .item5 { grid-column: span 3; grid-row: span 3; }
+        .item6 { grid-column: span 1; grid-row: span 2; }
+        .item7 { grid-column: span 2; grid-row: span 1; }
+        .item8 { grid-column: span 3; grid-row: span 2; }
+        .item9 { grid-column: span 2; grid-row: span 2; }
+        .item10 { grid-column: span 4; grid-row: span 1; }
+        .item11 { grid-column: span 1; grid-row: span 3; }
+        .item12 { grid-column: span 2; grid-row: span 2; }
+
+        /* 新增更多的格子，並且隨機大小 */
+        .item13 { grid-column: span 2; grid-row: span 1; }
+        .item14 { grid-column: span 3; grid-row: span 2; }
+        .item15 { grid-column: span 1; grid-row: span 2; }
+        .item16 { grid-column: span 2; grid-row: span 1; }
+        .item17 { grid-column: span 3; grid-row: span 1; }
+        .item18 { grid-column: span 2; grid-row: span 3; }
+        .item19 { grid-column: span 1; grid-row: span 2; }
+        .item20 { grid-column: span 4; grid-row: span 2; }
+        .item21 { grid-column: span 3; grid-row: span 1; }
+        .item22 { grid-column: span 2; grid-row: span 2; }
+        .item23 { grid-column: span 2; grid-row: span 3; }
+        .item24 { grid-column: span 1; grid-row: span 1; }
+
+        /* Zoom animation */
+        @keyframes zoomAnimation {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            25% {
+                transform: scale(0.98);
+                opacity: 0.2;
+            }
+        }
+        /* Apply animation to 12 randomly selected items */
+        .item1, .item3, .item5, .item7, .item9, .item11, 
+        .item13, .item15, .item17, .item19, .item21, .item23 {
+            animation: zoomAnimation 3s 3 ease-in-out;
+            background-image: url('https://images.unsplash.com/photo-1525013066836-c6090f0ad9d8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="item item1 item-animated">Item 1</div>
+        <div class="item item2 item-static">Item 2</div>
+        <div class="item item3 item-animated">Item 3</div>
+        <div class="item item4 item-static">Item 4</div>
+        <div class="item item5 item-animated">Item 5</div>
+        <div class="item item6 item-static">Item 6</div>
+        <!-- <div class="item item7 item-animated">Item 7</div> -->
+        <div class="item item8 item-static">Item 8</div>
+        <!-- <div class="item item9 item-animated">Item 9</div> -->
+        <div class="item item10 item-static">Item 10</div>
+        <div class="item item11 item-animated">Item 11</div>
+        <div class="item item12 item-static">Item 12</div>
+
+        <!-- 新增更多的隨機大小格子 -->
+        <div class="item item13 item-animated">Item 13</div>
+        <div class="item item14 item-static">Item 14</div>
+        <div class="item item15 item-animated">Item 15</div>
+        <div class="item item16 item-static">Item 16</div>
+        <div class="item item17 item-animated">Item 17</div>
+        <div class="item item18 item-static">Item 18</div>
+        <div class="item item19 item-animated">Item 19</div>
+        <div class="item item20 item-static">Item 20</div>
+        <div class="item item21 item-animated">Item 21</div>
+        <div class="item item22 item-static">Item 22</div>
+        <div class="item item23 item-animated">Item 23</div>
+        <div class="item item24 item-static">Item 24</div>
+        <div class="item item5 item-animated">Item 25</div>
+        <div class="item item3 item-animated">Item 25</div>
+        <div class="item item10 item-static">Item 26</div>
+        <div class="item item10 item-static">Item 26</div>
+        <div class="item item10 item-static">Item 26</div>
+    </div>
+</body>
+</html>
